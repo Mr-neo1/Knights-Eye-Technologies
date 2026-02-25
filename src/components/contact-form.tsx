@@ -44,17 +44,33 @@ export function ContactForm() {
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setIsSubmitting(true);
-        // Simulate server action
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-        console.log(values);
-        setIsSubmitting(false);
-        setIsSuccess(true);
-        form.reset();
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(values),
+            });
+
+            if (!response.ok) {
+                const data = await response.json();
+                throw new Error(data.error || "Failed to send message");
+            }
+
+            setIsSuccess(true);
+            form.reset();
+        } catch (error) {
+            console.error("Submission error:", error);
+            alert(error instanceof Error ? error.message : "An error occurred while sending your message. Please try again later.");
+        } finally {
+            setIsSubmitting(false);
+        }
     }
 
     if (isSuccess) {
         return (
-            <div className="bg-primary/10 border border-primary/20 rounded-lg p-8 text-center">
+            <div className="bg-primary/10 border border-primary/20 rounded-lg p-8 text-center animate-in fade-in duration-500">
                 <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <CheckCircle className="h-8 w-8 text-primary" />
                 </div>
@@ -62,7 +78,7 @@ export function ContactForm() {
                 <p className="text-muted-foreground mb-6">Thanks for reaching out. We'll get back to you within 24 hours.</p>
                 <Button onClick={() => setIsSuccess(false)} variant="outline">Send Another Message</Button>
             </div>
-        )
+        );
     }
 
     return (

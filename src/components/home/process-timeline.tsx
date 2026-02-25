@@ -2,42 +2,7 @@
 
 import { Section } from "@/components/layout/section";
 import { motion } from "framer-motion";
-import { Search, Lightbulb, Rocket, CheckCircle } from "lucide-react";
-
-const steps = [
-    {
-        icon: Search,
-        title: "Discovery & Audit",
-        description: "Deep dive into your infrastructure—security, performance, and workflows—to identify bottlenecks and risks.",
-        color: "text-blue-400",
-        bg: "bg-blue-400/10",
-        border: "border-blue-400/20",
-    },
-    {
-        icon: Lightbulb,
-        title: "Strategy & Architecture",
-        description: "A roadmap and technical architecture that solves immediate pain points while preparing for future scale.",
-        color: "text-amber-400",
-        bg: "bg-amber-400/10",
-        border: "border-amber-400/20",
-    },
-    {
-        icon: Rocket,
-        title: "Execution & Implementation",
-        description: "Configuring servers, setting up email systems, or building AI agents—with minimal disruption to your ops.",
-        color: "text-purple-400",
-        bg: "bg-purple-400/10",
-        border: "border-purple-400/20",
-    },
-    {
-        icon: CheckCircle,
-        title: "Testing & Handover",
-        description: "Rigorous testing ensures reliability. Detailed documentation and training so your team owns the system.",
-        color: "text-green-400",
-        bg: "bg-green-400/10",
-        border: "border-green-400/20",
-    },
-];
+import { processSteps } from "@/content/process";
 
 export function ProcessTimeline() {
     return (
@@ -53,7 +18,7 @@ export function ProcessTimeline() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {steps.map((step, index) => {
+                {processSteps.map((step, index) => {
                     const Icon = step.icon;
                     return (
                         <motion.div
@@ -79,7 +44,7 @@ export function ProcessTimeline() {
                                 <p className="text-sm text-muted-foreground leading-relaxed">{step.description}</p>
 
                                 {/* Connecting arrow for desktop */}
-                                {index < steps.length - 1 && (
+                                {index < processSteps.length - 1 && (
                                     <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-px bg-gradient-to-r from-border to-transparent" />
                                 )}
                             </div>

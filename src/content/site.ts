@@ -10,9 +10,9 @@ export const siteConfig = {
         linkedin: "https://linkedin.com/company/knights-eye-technologies",
     },
     contact: {
-        email: "contact@knightseyetech.com",
-        address: "Knights Eye Technologies LLP",
-        phone: "+1 (555) 123-4567", // Placeholder
+        email: "contact@knightseye.com",
+        address: "Registered Office: Above Sargam Pan, 1st Floor, Bhaktinagar Society Circle, Rajkot - 360002, (Gujarat) India.",
+        phone: "+91 7575000505",
     },
     keywords: [
         "Email Infrastructure",

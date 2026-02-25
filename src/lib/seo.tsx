@@ -1,5 +1,15 @@
 import { siteConfig } from "@/content/site";
 
+interface ServiceItem {
+    title: string;
+    description: string;
+}
+
+interface FaqItem {
+    question: string;
+    answer: string;
+}
+
 export function OrganizationJsonLd() {
     const jsonLd = {
         "@context": "https://schema.org",
@@ -28,7 +38,7 @@ export function OrganizationJsonLd() {
     );
 }
 
-export function ServiceJsonLd({ services }: { services: any[] }) {
+export function ServiceJsonLd({ services }: { services: ServiceItem[] }) {
     const jsonLd = {
         "@context": "https://schema.org",
         "@type": "Service",
@@ -59,7 +69,7 @@ export function ServiceJsonLd({ services }: { services: any[] }) {
     )
 }
 
-export function FaqJsonLd({ faqs }: { faqs: any[] }) {
+export function FaqJsonLd({ faqs }: { faqs: FaqItem[] }) {
     const jsonLd = {
         "@context": "https://schema.org",
         "@type": "FAQPage",

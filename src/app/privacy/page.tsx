@@ -33,7 +33,7 @@ export default function PrivacyPage() {
                     </p>
                     <h2>Contact</h2>
                     <p>
-                        For any questions about this Privacy Policy, please contact us at support@knightseyetech.com.
+                        For any questions about this Privacy Policy, please contact us at contact@knightseye.com.
                     </p>
                 </div>
             </Section>
